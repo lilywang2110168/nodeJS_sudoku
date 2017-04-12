@@ -1,6 +1,3 @@
-Team members: 
-Zhe Wang
-
 
 Instructions on how to access an appropriate compiler/interpreter for your solver. Please
 include a URL and any special installation instructions.
