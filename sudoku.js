@@ -55,22 +55,28 @@ function readFile(fileName){
     }
 }
 
+function main(){
+    readFile("sudoku.txt");
+    console.log("Here is the initial board");
+    printBoard();
+    let start = new Date();
+    if(solve(0,0)){
+        console.log("Here is the solution");
+        printBoard();
+    }else{
+        console.log("No solution");
+    }
 
-//here is main
-readFile("sudoku.txt");
-console.log("Here is the initial board");
-printBoard();
-let start = new Date();
-if(solve(0,0)){
-  console.log("Here is the solution");
-  printBoard();
-}else{
-    console.log("No solution");
+    //timing the solution
+    var end = new Date() - start;
+    console.info("Execution time: %dms", end);
+
 }
 
-//timing the solution
-var end = new Date() - start;
-console.info("Execution time: %dms", end);
+
+main();
+
+
 
 
 
