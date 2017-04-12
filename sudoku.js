@@ -2,7 +2,7 @@
 fs = require('fs');
 
 //this is a global variable
-let sudokuBoard=[9];
+let sudokuBoard=[];
 
 
 function solve(row, col) {
