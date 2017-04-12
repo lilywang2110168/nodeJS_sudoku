@@ -68,7 +68,7 @@ function main(){
     }
 
     //timing the solution
-    var end = new Date() - start;
+    let end = new Date() - start;
     console.info("Execution time: %dms", end);
 
 }
