@@ -1,6 +1,5 @@
 
-Instructions on how to access an appropriate compiler/interpreter for your solver. Please
-include a URL and any special installation instructions.
+Instructions on how to access an appropriate compiler/interpreter for the solver: 
 
 1. Install Webstorm(https://www.jetbrains.com/webstorm/)and Node.js (https://nodejs.org)
 2. Open the prject using Webstorm
