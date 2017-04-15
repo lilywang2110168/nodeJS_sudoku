@@ -9,12 +9,24 @@ function solve(row, col) {
 
 }
 
-function checkRow(row, col, num) {
-
+function checkRow(row, num) {
+    var col;
+    for (col = 0; col < 9; col++) {
+        if (num == sudokuBoard[row][col]) {
+            return false;
+        }
+    }
+    return true;
 }
 
-function checkCol(row, col, num) {
-
+function checkCol(col, num) {
+    var row;
+    for (row = 0; row < 9; row++) {
+        if (num == sudokuBoard[row][col]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function checkSubgrid(row, col, num) {
@@ -28,7 +40,7 @@ function check(row, col, num) {
 function printBoard() {
     var row;
     var col;
-    var line = "";
+    let line = "";
     for (row = 0; row < 9; row++) {
         for (col = 0; col < 9; col++) {
             line = line + sudokuBoard[row][col] + " ";
