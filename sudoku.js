@@ -2,16 +2,38 @@
 fs = require('fs');
 
 //this is a global variable
+//initilaize the sudokuBoard, grid size and board size.
 let sudokuBoard = [];
+let GRID_NUMBER = 3;
+let BOARD_SIZE = 9;
 
-
+//this is the recursive solution that fills the sudokuboard or return false.
 function solve(row, col) {
-
+    if (row == BOARD_SIZE) {
+        return true;
+    } else if (col == BOARD_SIZE) {
+        return solve(row + 1, 0);
+    } else if (sudokuBoard[row][col] != 0) {
+        return solve(row, col + 1);
+    }
+    var i;
+    for (i = 1; i <= BOARD_SIZE; i++) {
+        var a = check(row, col, i);
+        if (check(row, col, i)) {
+            sudokuBoard[row][col] = i;
+            if (solve(row, col + 1)) {
+                return true;
+            }
+        }
+    }
+    sudokuBoard[row][col] = 0;
+    return false;
 }
 
+//check whether we can place num by checking numbers in the row.
 function checkRow(row, num) {
     var col;
-    for (col = 0; col < 9; col++) {
+    for (col = 0; col < BOARD_SIZE; col++) {
         if (num == sudokuBoard[row][col]) {
             return false;
         }
@@ -19,9 +41,10 @@ function checkRow(row, num) {
     return true;
 }
 
+//check whether we can place num by checking numbers in the column.
 function checkCol(col, num) {
     var row;
-    for (row = 0; row < 9; row++) {
+    for (row = 0; row < BOARD_SIZE; row++) {
         if (num == sudokuBoard[row][col]) {
             return false;
         }
@@ -29,20 +52,35 @@ function checkCol(col, num) {
     return true;
 }
 
+//check whether we can place num by checking numbers in the subgrid.
 function checkSubgrid(row, col, num) {
-
+    let row1 = Math.floor(row / GRID_NUMBER) * GRID_NUMBER;
+    let col1 = Math.floor(col / GRID_NUMBER) * GRID_NUMBER;
+    var i;
+    var j;
+    for (i = 0; i < GRID_NUMBER; i++) {
+        for (j = 0; j < GRID_NUMBER; j++) {
+            if (sudokuBoard[row1 + i][col1 + i] == num) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
+//we check all the surrounding row, column and the subgrid to see whether
+//we can place a number at a certain position.
 function check(row, col, num) {
-
+    return checkCol(col, num) && checkRow(row, num) && checkSubgrid(row, col, num);
 }
 
+//print the sudoku board onto console.
 function printBoard() {
     var row;
     var col;
     let line = "";
-    for (row = 0; row < 9; row++) {
-        for (col = 0; col < 9; col++) {
+    for (row = 0; row < BOARD_SIZE; row++) {
+        for (col = 0; col < BOARD_SIZE; col++) {
             line = line + sudokuBoard[row][col] + " ";
             if (col == 2 || col == 5) {
                 line = line + "| ";
@@ -88,6 +126,7 @@ function main() {
     printBoard();
     let start = new Date();
     if (solve(0, 0)) {
+        console.log();
         console.log("Here is the solution");
         printBoard();
     } else {
@@ -96,6 +135,7 @@ function main() {
 
     //timing the solution
     let end = new Date() - start;
+    console.log();
     console.info("Execution time: %dms", end);
 
 }
