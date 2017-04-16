@@ -1,7 +1,6 @@
 //the node.js module used to read files
 fs = require('fs');
 
-//this is a global variable
 //initilaize the sudokuBoard, grid size and board size.
 let sudokuBoard = [];
 let GRID_NUMBER = 3;
@@ -16,9 +15,7 @@ function solve(row, col) {
     } else if (sudokuBoard[row][col] != 0) {
         return solve(row, col + 1);
     }
-    var i;
-    for (i = 1; i <= BOARD_SIZE; i++) {
-        var a = check(row, col, i);
+    for (let i = 1; i <= BOARD_SIZE; i++) {
         if (check(row, col, i)) {
             sudokuBoard[row][col] = i;
             if (solve(row, col + 1)) {
@@ -32,8 +29,7 @@ function solve(row, col) {
 
 //check whether we can place num by checking numbers in the row.
 function checkRow(row, num) {
-    var col;
-    for (col = 0; col < BOARD_SIZE; col++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
         if (num == sudokuBoard[row][col]) {
             return false;
         }
@@ -43,8 +39,7 @@ function checkRow(row, num) {
 
 //check whether we can place num by checking numbers in the column.
 function checkCol(col, num) {
-    var row;
-    for (row = 0; row < BOARD_SIZE; row++) {
+    for (let row = 0; row < BOARD_SIZE; row++) {
         if (num == sudokuBoard[row][col]) {
             return false;
         }
@@ -56,10 +51,8 @@ function checkCol(col, num) {
 function checkSubgrid(row, col, num) {
     let row1 = Math.floor(row / GRID_NUMBER) * GRID_NUMBER;
     let col1 = Math.floor(col / GRID_NUMBER) * GRID_NUMBER;
-    var i;
-    var j;
-    for (i = 0; i < GRID_NUMBER; i++) {
-        for (j = 0; j < GRID_NUMBER; j++) {
+    for (let i = 0; i < GRID_NUMBER; i++) {
+        for (let j = 0; j < GRID_NUMBER; j++) {
             if (sudokuBoard[row1 + i][col1 + i] == num) {
                 return false;
             }
@@ -76,11 +69,9 @@ function check(row, col, num) {
 
 //print the sudoku board onto console.
 function printBoard() {
-    var row;
-    var col;
     let line = "";
-    for (row = 0; row < BOARD_SIZE; row++) {
-        for (col = 0; col < BOARD_SIZE; col++) {
+    for (let row = 0; row < BOARD_SIZE; row++) {
+        for (let col = 0; col < BOARD_SIZE; col++) {
             line = line + sudokuBoard[row][col] + " ";
             if (col == 2 || col == 5) {
                 line = line + "| ";
@@ -125,16 +116,18 @@ function main() {
     console.log("Here is the initial board");
     printBoard();
     let start = new Date();
+    let end;
     if (solve(0, 0)) {
         console.log();
         console.log("Here is the solution");
+
         printBoard();
     } else {
         console.log("No solution");
     }
 
     //timing the solution
-    let end = new Date() - start;
+    end = new Date() - start;
     console.log();
     console.info("Execution time: %dms", end);
 
