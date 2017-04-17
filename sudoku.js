@@ -53,7 +53,7 @@ function checkSubgrid(row, col, num) {
     let col1 = Math.floor(col / GRID_NUMBER) * GRID_NUMBER;
     for (let i = 0; i < GRID_NUMBER; i++) {
         for (let j = 0; j < GRID_NUMBER; j++) {
-            if (sudokuBoard[row1 + i][col1 + i] == num) {
+            if (sudokuBoard[row1 + i][col1 + j] == num) {
                 return false;
             }
         }
