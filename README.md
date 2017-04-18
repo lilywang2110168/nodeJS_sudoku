@@ -9,3 +9,12 @@ Instructions on how to access an appropriate compiler/interpreter for the solver
 5. Open "Preferences" and select "Language&Frameworks", then choose the "JavaScript" and set the JavaScript language version to ECMAScript 6 to support let definition.
 5. Close the configuration page and hit the run button!
 
+Alternative Way:
+1. intall Node.js(https://nodejs.org/en/download/)
+2. Setup the Command line environment(for more information, check https://www.tutorialspoint.com/nodejs/nodejs_environment_setup.htm)
+3. Download sudoku.js along with a blank sudoku sample txt file.
+4. Open command line, cd to the directory of sudoku.js and sample txt file
+5. Type "node sudoku.js"
+6. A solution should appear on command line.
+
+
