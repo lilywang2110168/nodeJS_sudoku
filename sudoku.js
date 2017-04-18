@@ -1,3 +1,13 @@
+/*
+Name: Zhe Wang, Xueying Ding, Hanwen Ling
+Email:zhe.wang@vanderbilt.edu
+Date:April 14, 2017
+Course: Programming languages
+Honor statement:I did not receive nor give unahtorized help.
+Description: Project 4
+ */
+
+
 
 //the node.js module used to read files
 fs = require('fs');
