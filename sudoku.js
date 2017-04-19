@@ -7,15 +7,14 @@ Honor statement:I did not receive nor give unahtorized help.
 Description: Project 4
  */
 
-
-
 //the node.js module used to read files
 fs = require('fs');
 
 //initilaize the sudokuBoard, grid size and board size.
 let sudokuBoard = [];
-let GRID_NUMBER = 3;
-let BOARD_SIZE = 9;
+const GRID_NUMBER = 3;
+const BOARD_SIZE = 9;
+const FILE_NAME="sudoku.txt";
 
 //this is the recursive solution that fills the sudokuboard or return false.
 function solve(row, col) {
@@ -122,8 +121,9 @@ function readFile(fileName) {
     }
 }
 
-function main() {
-    readFile("sudoku.txt");
+
+function sudokuDriver() {
+    readFile(FILE_NAME);
     console.log("Here is the initial board");
     printBoard();
     let start = new Date();
@@ -145,7 +145,7 @@ function main() {
 }
 
 
-main();
+sudokuDriver();
 
 
 
