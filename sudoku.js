@@ -95,7 +95,7 @@ function printBoard() {
     }
 }
 
-
+//reads the input file
 function readFile(fileName) {
     //opening the file
     let contents = fs.readFileSync("./" + fileName).toString('utf-8');
@@ -121,7 +121,7 @@ function readFile(fileName) {
     }
 }
 
-
+//the driver method that solves the sudoku puzzle
 function sudokuDriver() {
     readFile(FILE_NAME);
     console.log("Here is the initial board");
@@ -141,9 +141,7 @@ function sudokuDriver() {
     end = new Date() - start;
     console.log();
     console.info("Execution time: %dms", end);
-
 }
-
 
 sudokuDriver();
 
